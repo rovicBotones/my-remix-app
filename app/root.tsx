@@ -1,22 +1,4 @@
-// import { cssBundleHref } from "@remix-run/css-bundle";
-// import type { LinksFunction } from "@remix-run/node";
-// import {
-//   Link,
-//   Links,
-//   LiveReload,
-//   Meta,
-//   Outlet,
-//   Scripts,
-//   ScrollRestoration,
-// } from "@remix-run/react";
-// import styles from './styles/tailwind.css'
 
-// export const links: LinksFunction = () => {
-//   // ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
-//   return (
-//     [{ rel: "stylesheet", href: styles }]
-//   )
-//   };
 import React from 'react';
 import type { LinksFunction } from "@remix-run/node"; 
 import { Outlet, LiveReload, Link, Links } from "@remix-run/react";
@@ -56,11 +38,7 @@ export function Document({children, title} : {children: React.ReactNode; title?:
     </head>
     <body>
       {children}
-      {/* {console.log({children})} */}
-      
-      {/* <div className="min-h-screen bg-gray-100">
-    
-      </div> */}
+   
       {process.env.NODE_ENV === 'development' ? 
       <LiveReload /> : null}
     </body>
@@ -73,9 +51,9 @@ export function Document({children, title} : {children: React.ReactNode; title?:
 export function Layout({children} : {children: React.ReactNode}) {
 return(
   <>
-  
-  <Sidebar />
-  
+  <Sidebar>
+    {children}
+  </Sidebar>
   </>
 )
 }
