@@ -22,7 +22,7 @@ import type { LinksFunction } from "@remix-run/node";
 import { Outlet, LiveReload, Link, Links } from "@remix-run/react";
 import styles from './styles/tailwind.css'
 import Header from './components/Header';
-
+import Sidebar from './components/Sidebar';
 // export const links: LinksFunction = () =>{
 //   return [{rel: "stylesheet", href: styles}]
 // }
@@ -37,9 +37,7 @@ export const links: LinksFunction = () => {
 export default function App(){
   return(
    <>
-   {/* <Header /> */}
    <Links/>
-   <Header/>
    <Document>
     <Layout>
       <Outlet />
@@ -54,15 +52,15 @@ export function Document({children, title} : {children: React.ReactNode; title?:
   return(
     <html lang='en'>
     <head>
-      <title>{title ? title : 'Remix App'}</title>
+      <title>{title ? title : 'Dev'}</title>
     </head>
     <body>
       {children}
       {/* {console.log({children})} */}
       
-      <div className="min-h-screen bg-gray-100">
+      {/* <div className="min-h-screen bg-gray-100">
     
-      </div>
+      </div> */}
       {process.env.NODE_ENV === 'development' ? 
       <LiveReload /> : null}
     </body>
@@ -75,16 +73,9 @@ export function Document({children, title} : {children: React.ReactNode; title?:
 export function Layout({children} : {children: React.ReactNode}) {
 return(
   <>
-  <nav className="navbar">
-    <Link to='/' className='text-6xl text-red-500 logo'>Remix</Link>
-    <ul className="nav">
-      <li>
-        <Link to='/about'>About</Link>
-      </li>
-
-    </ul>
-  </nav>
-  <div className="container">{children}</div>
+  
+  <Sidebar />
+  
   </>
 )
 }
